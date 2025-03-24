@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/database.js";
 import counterRoutes from "./routes/counterRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -14,11 +15,7 @@ app.use(express.json());
 
 
 app.use("/api/counter", counterRoutes);
-app.use((req, res, next) => {
-    console.log("hello");
-    next();
-  });
-
+app.use("/api/users", userRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
